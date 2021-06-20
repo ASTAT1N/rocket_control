@@ -36,11 +36,21 @@ void setVelve(unsigned int x){ //get x as 0 to 100
   }
 }
 //initialize load cell sensor
-//init it as 
-void setInit(){
-  if(digitalRead(setSw)==true){
-
+//init it as 0kg
+void setInit0(){
+  bool sw=true;
+  while(sw){
+    if(digitalRead(setSw)==true){
+      
+    }
   }
+  
+}
+
+//init it as Nkg
+const int N=10;
+void setInitN(){
+
 }
 
 //calculate thrust
