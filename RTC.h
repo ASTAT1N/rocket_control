@@ -35,22 +35,9 @@ void RTCInit(){
     }
     RTCInitCheck=true;
 }
-
-void loop () 
-{
+bool RTCValid(){ //valid=true
     RtcDateTime now = Rtc.GetDateTime();
-
-    printDateTime(now);
-    Serial.println();
-
-    if (!now.IsValid())
-    {
-        // Common Causes:
-        //    1) the battery on the device is low or even missing and the power line was disconnected
-        Serial.println("RTC lost confidence in the DateTime!");
-    }
-
-    delay(10000); // ten seconds
+    return now.IsValid();
 }
 
 #define countof(a) (sizeof(a) / sizeof(a[0]))
