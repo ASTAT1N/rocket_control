@@ -43,7 +43,7 @@ void setup() {
   //outputSetting
   pinMode(3,OUTPUT);
   pinMode(setSw,INPUT);
-  Serial.begin(9600)
+  Serial.begin(9600);
   
 
 }
