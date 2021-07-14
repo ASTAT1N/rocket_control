@@ -1,9 +1,9 @@
 #include "HX711.h"
 const int setSw=4;
-const int DOUT=3; //dataPin
-const int CLK=2;//clockPin 
+const int HX711_DOUT=3; //dataPin
+const int HX711_CLK=2;//clockPin 
 
-HX711 scale(DOUT, CLK);
+HX711 scale(HX711_DOUT, HX711_CLK);
 
 float calibration_factor = -7050;//그냥 적당한 값으로 시작합니다.
 long zeroFactor;
@@ -11,6 +11,8 @@ void setInit0(){
   scale.set_scale();
   scale.tare();	//Reset the scale to 0
   zeroFactor=scale.read_average(); //Get a baseline reading
+  Serial.print("BaseLine: ");
+  Serial.println(zeroFactor);
 }
 
 //init it as Nkg
@@ -30,5 +32,10 @@ void setInitN(){
 
 //calculate thrust
 float calthrust(){
-  return scale.get_units();
+  float result=0;
+  for(int i=0;i<10;++i){
+    result+=scale.get_units();
+  }
+  result/=10;
+  return result;
 }
